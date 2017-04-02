@@ -35,3 +35,4 @@ Route::get('/collect', ['uses' => 'CollectionsController2@collections']);
 Route::get('/example1', ['uses' => 'ExampleController@example']);
 Route::get('/example2', ['uses' => 'ExampleController@example2']);
 Route::get('/binaryToDecimal', ['uses' => 'ExampleController@binaryToDecimal']);
+Route::get('/github', ['uses' => 'ExampleController@github']);

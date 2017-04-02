@@ -81,6 +81,11 @@ class ExampleController extends Controller
 
 	public function example() {
 
+		$url = 'http://shopicruit.myshopify.com/products.json';
+		$events = $this->lFileGetContext($url);
+
+		dd($events);
+
 		$coleccion = collect($this->products);
 
 		$total = $coleccion->filter(function($product) {
@@ -146,9 +151,30 @@ class ExampleController extends Controller
     	dd($coleccion);
     }
 
-    public function github() {
+    private function buildUrlContext($url) {
     	$url = 'https://api.github.com/users/manuelprg/events';
-    	$events = json_decode(file_get_contents($url), true);
+    	$opts = [
+        'http' => [
+                'method' => 'GET',
+                'header' => [
+                        'User-Agent: PHP'
+                ]
+        	]
+		];
+		return stream_context_create($opts);
+    }
+
+    private function lFileGetContext($url) {
+    	$context = $this->buildUrlContext($url);
+    	
+		return file_get_contents($url, false, $context);
+    }
+
+    public function github() {
+
+    	$url = 'https://api.github.com/users/manuelprg/events';
+    	$events = $this->lFileGetContext($url);
+    	$events = collect(json_decode($events, true))->pluck('type');
     	dd($events);
     }
 }
