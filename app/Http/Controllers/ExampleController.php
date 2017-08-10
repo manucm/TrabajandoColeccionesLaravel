@@ -80,13 +80,30 @@ class ExampleController extends Controller
     	];
 
 	public function example() {
-
-		$url = 'http://shopicruit.myshopify.com/products.json';
+/*
+		$url = 'http://shopicruit.myshopify.com/products.json'; dd(json_decode(file_get_contents($url), true));
 		$events = $this->lFileGetContext($url);
 
-		dd($events);
+		dd($events); */
 
-		$coleccion = collect($this->products);
+		$coleccion = collect($this->products);        
+
+        $coleccion = $coleccion->filter(function($item) {
+            return collect(['Wallet', 'Lamp'])->contains($item['product_type']);
+        })
+
+        /*->map(function($item) {
+            return $item['variants'];
+        })->flatten(1)->sum('price');*/
+
+        ->flatMap(function($item) {
+            return $item['variants'];
+        })->pluck('title'); //->sum('price');
+
+dd($coleccion);
+
+
+
 
 		$total = $coleccion->filter(function($product) {
 			return collect(['Wallet', 'Lamp'])->contains($product['product_type']);
@@ -172,9 +189,45 @@ class ExampleController extends Controller
 
     public function github() {
 
+    	$eventScores = [
+		    'PushEvent' => 5,
+		    'CreateEvent' => 4,
+		    'IssuesEvent' => 3,
+		    'CommitCommentEvent' => 2,
+		];
+
     	$url = 'https://api.github.com/users/manuelprg/events';
     	$events = $this->lFileGetContext($url);
-    	$events = collect(json_decode($events, true))->pluck('type');
+    	$events = collect(json_decode($events, true))
+    					->pluck('type')->merge(['sorry'])
+    					->map(function($type) {
+    						return collect(['PushEvent' => 5,
+									    'CreateEvent' => 4,
+									    'IssuesEvent' => 3,
+									    'CommitCommentEvent' => 2,
+									    ])
+									    
+									->get($type, 1);
+    					});
     	dd($events);
+    }
+
+    public function rememorando() {
+        $shift = [
+            'Shipping_Steve_A7',
+            'Sales_B9',
+            'Support_Tara_K11',
+            'J15',
+            'Warehose_B2',
+            'Shipping_Dave_A6',
+        ];
+
+        $coleccion = collect($shift);
+
+        $coleccion = $coleccion->map(function($item) {
+            return collect(explode('_', $item))->last();
+        });
+
+        dd($coleccion);
     }
 }

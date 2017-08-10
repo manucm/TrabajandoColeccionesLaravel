@@ -45,7 +45,46 @@ Controller
     public function collections() {
     	//$collection = Collection::make($this->items);
     	//$collection = new Collection($this->items);
-    	$collection = collect($this->items);
-    	dd($collection);
+    	return collect($this->items);
+    }
+
+    public function metodos($metodo) {
+
+    	$coleccion = $this->collections();
+    	$valores = collect([2, 3, 5, 1, 7, 9]);
+    	$texto = collect(['mail.com', 'maxi@hotmail.com', 'bromas@hotmail.com']);
+
+    	switch ($metodo) {
+    		case 'reject':
+    			$resultado = $coleccion->reject(function($item) {
+    				return $item['sueldo'] < 250000;
+    			});
+    			break;
+    		case 'reduce' : 
+    			$resultado = $valores->reduce(function($carry, $item) {
+    				return $carry + $item;
+    			}, 3);
+    			break;
+
+    		case 'reduceTexto':
+    			$resultado = $texto->reduce(function($acc, $item) use ($texto) {
+    				if ($texto->last() == $item)
+    					return $acc . $item;
+    				else
+    					return $acc  . $item . ', ';
+    			}, '');
+    			break;
+    		case 'suma':
+    			$resultado = $valores->sum(); break;
+    		case 'sumaArray':
+    			$resultado = $coleccion->sum('sueldo');
+    		
+    		default:
+    			# code...
+    			break;
+    	}
+
+    	dd($resultado);
+    	return $resultado;
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "content-hash": "ae2dc10de6cd36213241fa620b5070c0",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -421,6 +421,60 @@
                 "psysh"
             ],
             "time": "2016-12-30T18:13:17+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "9b8f51e7a2368911c896f5d42757886bae0717b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/9b8f51e7a2368911c896f5d42757886bae0717b5",
+                "reference": "9b8f51e7a2368911c896f5d42757886bae0717b5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.4.*",
+                "illuminate/routing": "5.4.*",
+                "illuminate/session": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "illuminate/view": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/database": "5.4.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2017-05-22T06:35:07+00:00"
         },
         {
             "name": "league/flysystem",
@@ -980,6 +1034,50 @@
                 "uuid"
             ],
             "time": "2017-03-18T15:38:09+00:00"
+        },
+        {
+            "name": "skydiver/laravel-materialize-css",
+            "version": "v0.98.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skydiver/laravel-materialize-css.git",
+                "reference": "238711f2e9408e341086711c45c4a95ff510e693"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skydiver/laravel-materialize-css/zipball/238711f2e9408e341086711c45c4a95ff510e693",
+                "reference": "238711f2e9408e341086711c45c4a95ff510e693",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Skydiver\\LaravelMaterializeCSS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin",
+                    "email": "labs@flydev.com"
+                }
+            ],
+            "description": "Add Materialize CSS Framework to Laravel",
+            "keywords": [
+                "css",
+                "css framework",
+                "laravel",
+                "material design",
+                "materialize"
+            ],
+            "time": "2017-02-13T14:15:07+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2016,12 +2114,12 @@
             "version": "0.9.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },
